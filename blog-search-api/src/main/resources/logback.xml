@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="10 seconds" debug="false">
+    <!-- DEBUG -->
+    <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{HH:mm:ss.SSS} [%10.10thread] %-5level %-40.40logger{40} : %msg%n%xException</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="asyncConsoleAppender" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="consoleAppender"/>
+    </appender>
+    <!-- DEBUG -->
+    <!-- TRACE -->
+    <appender name="traceAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{HH:mm:ss.SSS} [%10.10thread] %-5level %-40.40logger{40} : %msg%n%xException</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="asyncTraceAppender" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="traceAppender"/>
+    </appender>
+
+    <logger name="TRACE_LOGGER" level="DEBUG" additivity="false">
+        <appender-ref ref="asyncTraceAppender"/>
+    </logger>
+    <!-- TRACE -->
+    <!-- ERROR -->
+    <appender name="errorAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{HH:mm:ss.SSS} [%10.10thread] %-5level %-40.40logger{40} : %msg%n%xException</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="asyncErrorAppender" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="errorAppender"/>
+    </appender>
+
+    <logger name="ERROR_LOGGER" level="DEBUG" additivity="false">
+        <appender-ref ref="asyncErrorAppender"/>
+    </logger>
+    <!-- ERROR -->
+    <root level="DEBUG">
+        <appender-ref ref="asyncConsoleAppender"/>
+    </root>
+</configuration>

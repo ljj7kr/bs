@@ -1,0 +1,34 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /v1
+  shutdown: graceful
+spring:
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+
+# app config
+bs:
+  clients:
+    kakao:
+      base-url: https://dapi.kakao.com
+      api-path: /v2/search/web?sort=%s&page=%d&size=%d&query=%s
+      headers:
+        Authorization: "KakaoAK b1991d8e0cc0cdc67a1769857a6531d5"
+    naver:
+      base-url: https://openapi.naver.com
+      api-path: /v1/search/blog.json?query=%s&display=%d&start=%d&sort=%s
+      headers:
+        X-Naver-Client-Id: PdbtdpcXzkZcKYjRCgbF
+        X-Naver-Client-Secret: kye1zTZXb3
+
